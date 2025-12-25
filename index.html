@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para o Meu Amor ❤️</title>
+    <style>
+        /* Fundo com Gradiente e Animação Suave */
+        body {
+            background: linear-gradient(-45deg, #fff0f5, #ffe4e1, #fffaf0, #ffedf0);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            font-family: 'Georgia', serif;
+            color: #4a4a4a;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Camada de corações decorativos no fundo */
+        .bg-decor {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+            opacity: 0.4;
+        }
+
+        header {
+            padding: 50px 20px;
+            text-align: center;
+            background: rgba(255, 182, 193, 0.4);
+            backdrop-filter: blur(5px);
+            width: 100%;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        h1 { color: #d02090; font-size: 2.5rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.1); }
+
+        .heart-main {
+            font-size: 60px;
+            animation: pulse 1.5s infinite;
+            display: inline-block;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        /* Galeria com Animação nas Fotos */
+        .galeria {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            padding: 40px 20px;
+            max-width: 1000px;
+            width: 90%;
+        }
+
+        .foto-card {
+            background: white;
+            padding: 10px;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+            transition: all 0.4s ease-in-out;
+            cursor: pointer;
+        }
+
+        .foto-card:hover {
+            transform: scale(1.08) rotate(2deg);
+            box-shadow: 0 10px 25px rgba(208, 32, 144, 0.3);
+        }
+
+        .foto-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        /* Quiz */
+        .quiz-container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 35px;
+            border-radius: 25px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            max-width: 500px;
+            width: 90%;
+            margin: 30px 0;
+            text-align: center;
+            border: 1px solid rgba(255, 182, 193, 0.5);
+        }
+
+        .pergunta { display: none; }
+        .pergunta.ativa { display: block; animation: fadeIn 0.5s; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .opcoes button {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            margin: 10px 0;
+            border: 2px solid #ffb6c1;
+            background: white;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s;
+            font-weight: bold;
+            color: #4a4a4a;
+        }
+
+        .opcoes button:hover {
+            background: #ffb6c1;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        #btn-surpresa {
+            background-color: #ff1493;
+            color: white;
+            border: none;
+            padding: 15px 45px;
+            font-size: 1.2rem;
+            border-radius: 35px;
+            cursor: pointer;
+            margin: 20px 0;
+            display: none;
+            box-shadow: 0 5px 15px rgba(255, 20, 147, 0.4);
+            transition: 0.3s;
+        }
+
+        #btn-surpresa:hover { transform: scale(1.1); background-color: #d02090; }
+
+        .mensagem-area {
+            display: none;
+            max-width: 600px;
+            background: white;
+            padding: 40px;
+            border-radius: 25px;
+            border: 2px dashed #ff69b4;
+            margin: 40px 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .coracao-voador {
+            position: fixed;
+            bottom: -50px;
+            z-index: 1000;
+            animation: subir 4s linear forwards;
+        }
+
+        @keyframes subir { to { transform: translateY(-110vh) rotate(360deg); opacity: 0; } }
+
+        .premio-box {
+            background: #fff0f5;
+            padding: 20px;
+            border-radius: 15px;
+            border: 2px solid #ff1493;
+            margin-top: 20px;
+            font-weight: bold;
+            color: #d02090;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-decor" id="bg-decor"></div>
+
+    <header>
+        <div class="heart-main">❤️</div>
+        <h1>Nossa História</h1>
+    </header>
+
+    <main class="galeria">
+        <div class="foto-card"><img src="Fotod/fotos1.jpeg"></div>
+        <div class="foto-card"><img src="Fotod/foto2.jpeg"></div>
+        <div class="foto-card"><img src="Fotod/foto3.jpeg"></div>
+        <div class="foto-card"><img src="Fotod/foto4.jpeg"></div>
+        <div class="foto-card"><img src="Fotod/fotos5.jpeg"></div>
+        <div class="foto-card"><img src="Fotod/foto6.jpeg"></div>
+        <div class="foto-card"><img src="Fotod/foto7.jpeg"></div>
+        <div class="foto-card"><img src="Fotod/foto8.jpeg"></div>
+    </main>
+
+    <section class="quiz-container">
+        <div id="quiz-content">
+            <h2 id="quiz-titulo">Quiz do Amor ❤️</h2>
+
+            <div class="pergunta ativa" id="q1">
+                <p>1. Qual minha bebida favorita?</p>
+                <div class="opcoes">
+                    <button onclick="responder(1, false)">Café</button>
+                    <button onclick="responder(1, true)">Abacate</button>
+                    <button onclick="responder(1, false)">Suco de Laranja</button>
+                </div>
+            </div>
+
+            <div class="pergunta" id="q2">
+                <p>2. Qual minha comida favorita?</p>
+                <div class="opcoes">
+                    <button onclick="responder(2, true)">Pizza</button>
+                    <button onclick="responder(2, false)">Lasanha</button>
+                    <button onclick="responder(2, false)">Churrasco</button>
+                </div>
+            </div>
+
+            <div class="pergunta" id="q3">
+                <p>3. O que mais gosto de fazer no tempo livre?</p>
+                <div class="opcoes">
+                    <button onclick="responder(3, false)">Dormir</button>
+                    <button onclick="responder(3, true)">Jogar</button>
+                    <button onclick="responder(3, false)">Ver TV</button>
+                </div>
+            </div>
+
+            <div class="pergunta" id="q4">
+                <p>4. Qual é meu Hobby técnico favorito?</p>
+                <div class="opcoes">
+                    <button onclick="responder(4, false)">Windows</button>
+                    <button onclick="responder(4, true)">Linux</button>
+                    <button onclick="responder(4, false)">Mac OS</button>
+                </div>
+            </div>
+
+            <div class="pergunta" id="q5">
+                <p>5. Qual cor eu mais gosto de te ver usando?</p>
+                <div class="opcoes">
+                    <button onclick="responder(5, true)">Qualquer uma, você fica lindona</button>
+                    <button onclick="responder(5, false)">Preto</button>
+                    <button onclick="responder(5, false)">Branco</button>
+                </div>
+            </div>
+
+            <div class="pergunta" id="q6">
+                <p>6. Quem deu a iniciativa do beijo?</p>
+                <div class="opcoes">
+                    <button onclick="responder(6, true)">Eu</button>
+                    <button onclick="responder(6, false)">Você</button>
+                </div>
+            </div>
+
+            <div class="pergunta" id="q7">
+                <p>7. Qual o meu maior sonho?</p>
+                <div class="opcoes">
+                    <button onclick="responder(7, false)">Comprar um carro</button>
+                    <button onclick="responder(7, true)">Construir um futuro com você</button>
+                </div>
+            </div>
+
+            <div class="pergunta" id="q8">
+                <p>8. Você me ama?</p>
+                <div class="opcoes">
+                    <button onclick="responder(8, true)">Sim, com certeza!</button>
+                    <button onclick="responder(8, true)">Mais que tudo!</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="resultado-final">
+            <h2 id="status-msg"></h2>
+            <p id="placar"></p>
+            <div id="premio" class="premio-box" style="display:none;">
+                🎟️ VALE-PRESENTE: Você ganhou beijinhos pessoalmente!
+            </div>
+        </div>
+    </section>
+
+    <button id="btn-surpresa">Aperte aqui, meu amor ❤️</button>
+
+    <div id="msg" class="mensagem-area">
+        <h2>Declaração</h2>
+        <p>Você acertou quase tudo (ou tudo!), e isso só prova o quanto a gente se combina. Obrigado por ser essa namorada incrivel. Eu te amo Lindona da minha vida! ❤️</p>
+    </div>
+
+    <script>
+        let acertos = 0;
+        let perguntaAtual = 1;
+        const totalPerguntas = 8;
+
+        // Gerar corações lentos no fundo ao carregar
+        window.onload = () => {
+            const bg = document.getElementById('bg-decor');
+            for(let i=0; i<15; i++) {
+                const c = document.createElement('div');
+                c.innerHTML = '❤️';
+                c.style.position = 'absolute';
+                c.style.left = Math.random() * 100 + '%';
+                c.style.top = Math.random() * 100 + '%';
+                c.style.fontSize = (Math.random() * 20 + 10) + 'px';
+                c.style.opacity = '0.3';
+                bg.appendChild(c);
+            }
+        };
+
+        function responder(num, correto) {
+            if(correto) {
+                acertos++;
+                lancarCoracoes(5);
+            }
+            document.getElementById(`q${num}`).classList.remove('ativa');
+            perguntaAtual++;
+            if(perguntaAtual <= totalPerguntas) {
+                document.getElementById(`q${perguntaAtual}`).classList.add('ativa');
+            } else {
+                mostrarResultado();
+            }
+        }
+
+        function mostrarResultado() {
+            document.getElementById('quiz-content').style.display = 'none';
+            const resDiv = document.getElementById('resultado-final');
+            resDiv.style.display = 'block';
+            document.getElementById('placar').innerText = `Você acertou ${acertos} de ${totalPerguntas}!`;
+
+            if(acertos >= 7) {
+                document.getElementById('status-msg').innerText = "Incrível! Você me conhece demais! 😍";
+                document.getElementById('premio').style.display = 'block';
+            } else {
+                document.getElementById('status-msg').innerText = "Você foi bem! ❤️";
+            }
+            document.getElementById('btn-surpresa').style.display = 'inline-block';
+        }
+
+        document.getElementById('btn-surpresa').addEventListener('click', () => {
+            document.getElementById('msg').style.display = 'block';
+            document.getElementById('msg').scrollIntoView({ behavior: 'smooth' });
+            lancarCoracoes(50);
+        });
+
+        function lancarCoracoes(qtd) {
+            for (let i = 0; i < qtd; i++) {
+                setTimeout(() => {
+                    const c = document.createElement('div');
+                    c.classList.add('coracao-voador');
+                    c.innerHTML = '❤️';
+                    c.style.left = Math.random() * 100 + 'vw';
+                    c.style.fontSize = (Math.random() * 20 + 15) + 'px';
+                    c.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                    document.body.appendChild(c);
+                    setTimeout(() => c.remove(), 4000);
+                }, i * 100);
+            }
+        }
+    </script>
+</body>
+</html>
